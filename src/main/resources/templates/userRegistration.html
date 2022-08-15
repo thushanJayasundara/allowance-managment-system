@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/index}">
+<body onload="clearUserField() , loadUserTable();">
+<div layout:fragment="content" class="main-panel">
+    <div class="content-wrapper">
+        <div class="page-header">
+            <h3 class="page-title">User Management TAB</h3>
+        </div>
+        <div class="row">
+
+            <div class="col-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <blockquote class="blockquote blockquote-primary">
+                            <div class="search-field d-none d-md-block">
+                                <form class="d-flex align-items-center h-100" >
+                                    <div class="input-group">
+                                        <input type="text" id="search_privilege" class="form-control bg-transparent border-0"
+                                               placeholder="Search user (user name)">
+                                        <button type="button" onclick="searchPrivilege()" class="btn btn-gradient-primary btn-rounded btn-icon">
+                                            <i class="mdi mdi-magnify"></i>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <form class="form-sample">
+                            <p class="card-description">Enter User details</p>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">User Name</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="userName" required="true"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Password</label>
+                                        <div class="col-sm-9">
+                                            <input type="password" class="form-control" id="password" required="true"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Confirm Password</label>
+                                        <div class="col-sm-9">
+                                            <input type="password" class="form-control" id="confirmPassword" required="true"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Select Role</label>
+                                        <div class="col-sm-9">
+                                            <select class="form-control" id="role" required="true">
+                                                <option value="-1">Your Role</option>
+                                                <option value="ADMIN">ADMIN</option>
+                                                <option value="OFFICER">OFFICER</option>
+                                                <option value="PERSON">PERSON</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Select status</label>
+                                        <div class="col-sm-9">
+                                            <select class="form-control" id="status" required="true">
+                                                <option value="-1">Your status</option>
+                                                <option value="ACTIVE">ACTIVE</option>
+                                                <option value="INACTIVE">INACTIVE</option>
+                                            </select>  </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <div class="col-sm-9">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <input type="hidden" class="form-control" id="userId">
+                                        <button type="button" onclick="saveUser();"
+                                                class="btn btn-gradient-success btn-rounded btn-fw">User Save/Edit
+                                        </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <button type="button" onclick="clearUserField();"
+                                                class="btn btn-gradient-danger btn-rounded btn-fw"> Clear
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">User List</h4>
+                        <br>
+                        </p>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped dataTable" id="userTable">
+                                <thead>
+                                <tr>
+                                    <th> User Name </th>
+                                    <th> Role </th>
+                                    <th> Status </th>
+                                    <th> Action </th>
+                                </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

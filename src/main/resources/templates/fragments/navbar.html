@@ -1,0 +1,77 @@
+<div th:fragment="navbar"  xmlns:th="http://www.w3.org/1999/xhtml">
+
+        <!-- partial:partials/_sidebar.html -->
+        <nav class="sidebar sidebar-offcanvas" id="sidebar">
+          <ul class="nav">
+            <li class="nav-item nav-profile">
+              <a href="#" class="nav-link">
+                <div class="nav-profile-image">
+                  <span class="login-status online"></span>
+                  <!--change to offline or busy as needed-->
+                </div>
+                <div class="nav-profile-text d-flex flex-column">
+                  <span class="font-weight-bold mb-2" th:text="${session.username}"></span>
+                  <span class="text-secondary text-small"  th:text="${session.department}"></span>
+                  <input type="hidden" class="form-control" id="adminUserENum"  th:value="${session.empNumber}">
+                </div>
+                <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
+              </a>
+            </li>
+
+            <div sec:authorize="hasRole('ROLE_ADMIN')">
+              <li class="nav-item">
+                <a class="nav-link" th:href="@{/dash}">
+                  <span class="menu-title">Dashboard</span>
+                  <i class="mdi mdi-home menu-icon"></i>
+                </a>
+              </li>
+            </div>
+
+
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+                <span class="menu-title">Person & Privilege <br> Managment</span>
+                <i class="menu-arrow"></i>
+                <i class="mdi mdi-contacts menu-icon"></i>
+              </a>
+              <div class="collapse" id="ui-basic">
+                <ul class="nav flex-column sub-menu">
+               <!--   <li class="nav-item"> <a class="nav-link"  th:href="@{/leave}">Leave Management</a></li>-->
+                  <li class="nav-item"> <a class="nav-link"  th:href="@{/person}">Add Person</a></li>
+                  <li class="nav-item"> <a class="nav-link"  th:href="@{/personAndPrivilege}">Add Privilege to<br>Person</a></li>
+
+                </ul>
+              </div>
+            </li>
+
+            <div sec:authorize="hasRole('ROLE_ADMIN')">
+              <li class="nav-item">
+                <a class="nav-link" th:href="@{/uReg}">
+                  <span class="menu-title">User Management</span>
+                  <i class="mdi mdi-account-multiple-plus menu-icon"></i>
+                </a>
+              </li>
+            </div>
+
+            <div sec:authorize="hasRole('ROLE_ADMIN')">
+              <li class="nav-item">
+                <a class="nav-link" th:href="@{/pReg}">
+                  <span class="menu-title">Privilege Management</span>
+                  <i class="mdi mdi-package menu-icon"></i>
+                </a>
+              </li>
+            </div>
+
+            <div sec:authorize="hasRole('ROLE_ADMIN')">
+              <li class="nav-item">
+                <a class="nav-link" th:href="@{/gramaNiladhariDivision}">
+                  <span class="menu-title">Grama-Niladhari <br> Division Management</span>
+                  <i class="mdi mdi-checkbox-multiple-blank menu-icon"></i>
+                </a>
+              </li>
+            </div>
+
+          </ul>
+        </nav>
+
+      </div>

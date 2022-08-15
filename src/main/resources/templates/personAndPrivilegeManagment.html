@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/index}">
+<body onload="loadPersonAndPrivilegeTable(),clearPersonAndPrivilege();">
+<div  layout:fragment="content" class="main-panel">
+    <div class="content-wrapper">
+        <div class="page-header">
+            <h3 class="page-title">Person and Privilege Management TAB</h3>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <p class="card-description"> Enter user details </p>
+                        <blockquote class="blockquote blockquote-primary">
+                            <div class="search-field d-none d-md-block">
+                                <form class="d-flex align-items-center h-100" >
+                                    <div class="input-group">
+                                        <input type="text" class="form-control bg-transparent border-0"  id="search_user" placeholder="Search user (NIC)">
+                                        <button type="button" onclick="searchUser()" class="btn btn-gradient-primary btn-rounded btn-icon">
+                                            <i class="mdi mdi-magnify"></i>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </blockquote>
+                        <br>
+                        <br>
+                        <form class="forms-sample">
+                            <input type="hidden" class="form-control" id="priAndPerId" >
+                            <div class="form-group">
+                                <label >Select Person</label>
+                                <select class="form-control" id="setAllUser" required="true">
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label >Select Privilege</label>
+                                <div class="row privilege_div" id="privilege_div">
+                                </div>
+                            </div>
+
+                            <button type="button" onclick="savePersonPrivilege()" class="btn btn-gradient-success btn-rounded btn-fw">User Save/Edit</button>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <button type = "button" onclick="clearPersonAndPrivilege()" class="btn btn-gradient-danger btn-rounded btn-fw"> Clear </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Vacate List</h4>
+                        <br>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped dataTable" id="privilegeAndPersonTable">
+                                <thead>
+                                <tr>
+                                    <th>Person Name</th>
+                                    <th>Person NIC</th>
+                                    <th>Person Privilege</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

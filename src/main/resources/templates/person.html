@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/index}">
+<body onload="loadPersonTable(); clearPersonField();">
+<div layout:fragment="content" class="main-panel">
+    <div class="content-wrapper">
+        <div class="page-header">
+            <h3 class="page-title">Person Management TAB</h3>
+        </div>
+        <div class="row">
+
+            <div class="col-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <blockquote class="blockquote blockquote-primary">
+                            <div class="search-field d-none d-md-block">
+                                <form class="d-flex align-items-center h-100" action="#">
+                                    <div class="input-group">
+                                        <input type="text" required id="search_person"
+                                               class="form-control bg-transparent border-0"
+                                               placeholder="Search Person (Person NIC)">
+                                        <button type="button" onclick="searchPerson()"
+                                                class="btn btn-gradient-primary btn-rounded btn-icon">
+                                            <i class="mdi mdi-magnify"></i>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <form class="form-sample">
+                            <p class="card-description">Enter Person details</p>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Initials</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" id="initialsId" class="form-control"  required="true"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Full Name</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="fullNameId" required="true"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+
+                                        <label class="col-sm-3 col-form-label">First Name</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" id="firstNameId" class="form-control" required="true"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Last Name</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" id="lastNameId" class="form-control" required="true"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Date Of Birth</label>
+                                        <div class="col-sm-9">
+                                            <input type="date" id="dobId" class="form-control"  required="true"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">NIC</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="nicId"  required="true"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Address</label>
+                                        <div class="col-sm-9">
+                                            <textarea  class="form-control" id="addressId" rows="3"  required="true"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Select Grama Niladhari Division</label>
+                                        <div class="col-sm-9">
+                                            <select class="form-control" id="setGNDivisionId" required="true">
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Contact Number</label>
+                                        <div class="col-sm-9">
+                                            <input type="number" maxlength="10" class="form-control" id="contactNumber" required="true"/>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Gender</label>
+                                        <div class="col-sm-4">
+                                            <div class="form-check">
+                                                <label class="form-check-label">
+                                                    <input type="radio" class="form-check-input" name="maleName" id="maleId" value="MALE" checked> Male </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-5">
+                                            <div class="form-check">
+                                                <label class="form-check-label">
+                                                    <input type="radio" class="form-check-input" name="femaleName" id="femaleId" value="FEMALE"> Female </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Select Role</label>
+                                        <div class="col-sm-9">
+                                            <select class="form-control" id="role" required="true">
+                                                <option value="-1">Your Role</option>
+                                                <option value="PERSON">PERSON</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Select status</label>
+                                        <div class="col-sm-9">
+                                                <select class="form-control" id="statusId" required="true">
+                                                    <option value="-1">Select status</option>
+                                                    <option value="ACTIVE">ACTIVE</option>
+                                                    <option value="INACTIVE">INACTIVE</option>
+                                                </select>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <input type="hidden" class="form-control" id="personId">
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <input type="hidden" class="form-control" id="userId">
+                                        <button type="button" onclick="savePerson();"
+                                                class="btn btn-gradient-success btn-rounded btn-fw">Person Save/Edit
+                                        </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <button type="button" onclick="clearPersonField();"
+                                                class="btn btn-gradient-danger btn-rounded btn-fw"> Clear
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Person List</h4>
+                        <br>
+                        </p>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped dataTable" id="personTable">
+                                <thead>
+                                <tr>
+                                    <th>Full Name</th>
+                                    <th>Initials</th>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>DOB</th>
+                                    <th>Registration Date</th>
+                                    <th>NIC</th>
+                                    <th>Address</th>
+                                    <th>Contact Number</th>
+                                    <th>G. M. Division</th>
+                                    <th>Gender</th>
+                                    <th>Status</th>
+                                    <th>Active</th>
+                                </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<div th:replace="fragments/head :: head"></div>
+<body >
+<div class="container-scroller">
+  <!-- partial:partials/_navbar.html -->
+  <div th:replace="fragments/hedder_nav :: hedder_nav"> </div>
+  <!-- partial -->
+  <div class="container-fluid page-body-wrapper">
+    <!-- partial:partials/_sidebar.html -->
+    <div th:replace="fragments/navbar :: navbar"> </div>
+    <!-- partial -->
+    <div layout:fragment="content" id="content"> </div>
+    <!-- main-panel ends -->
+  </div>
+  <!-- page-body-wrapper ends -->
+</div>
+<div th:replace="fragments/fotter_js :: fotter"></div>
+<!-- End custom js for this page -->
+</body>
+</html>

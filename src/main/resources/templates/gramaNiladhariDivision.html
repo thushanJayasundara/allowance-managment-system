@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/index}">
+<body onload="loadDivisionTable()">
+<div  layout:fragment="content" class="main-panel">
+    <div class="content-wrapper">
+        <div class="page-header">
+            <h3 class="page-title"> Grama-Niladhari Division Management TAB  </h3>
+        </div>
+        <div class="row">
+            <div class="col-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <blockquote class="blockquote blockquote-primary">
+                            <div class="search-field d-none d-md-block">
+                                <form class="d-flex align-items-center h-100" >
+                                    <div class="input-group">
+                                        <input type="text" class="form-control bg-transparent border-0"  id="search_user" placeholder="Search Grama-Niladhari Division (Enter Division Code)">
+                                        <button type="button" onclick="searchUser()" class="btn btn-gradient-primary btn-rounded btn-icon">
+                                            <i class="mdi mdi-magnify"></i>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <form class="form-sample">
+                            <p class="card-description">Enter Grama-Niladhari Division</p>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Division Name</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="divisionNameId" required="true"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Division Code</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="divisionCodeId" required="true">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Select status</label>
+                                        <div class="col-sm-9">
+                                            <select class="form-control" id="divisionStatusId">
+                                                <option value="-1">Select Status</option>
+                                                <option value="ACTIVE">ACTIVE</option>
+                                                <option value="INACTIVE">INACTIVE</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <input type="hidden" class="form-control" id="divisionId">
+                                        <button type="button" onclick="saveGramaNiladariDivision();"
+                                                class="btn btn-gradient-success btn-rounded btn-fw">Division Save/Edit
+                                        </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <button type="button" onclick="clearGramaNiladhariDivision();"
+                                                class="btn btn-gradient-danger btn-rounded btn-fw"> Clear
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Grama-Niladhari Division List</h4>
+                        <br>
+                        </p>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped dataTable" id="divisionTable">
+                                <thead>
+                                <tr>
+                                    <th> Grama-Niladhari Division</th>
+                                    <th> Grama-Niladhari Division Code </th>
+                                    <th> Status </th>
+                                    <th> Action </th>
+                                </tr>
+                                </thead>
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

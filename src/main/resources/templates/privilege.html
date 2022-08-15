@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/index}">
+<body onload="clearPrivilege(),loadPrivilegeTable()">
+<div layout:fragment="content" class="main-panel">
+    <div class="content-wrapper">
+        <div class="page-header">
+            <h3 class="page-title">Privilege Management TAB</h3>
+        </div>
+        <div class="row">
+
+            <div class="col-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <blockquote class="blockquote blockquote-primary">
+                            <div class="search-field d-none d-md-block">
+                                <form class="d-flex align-items-center h-100" >
+                                    <div class="input-group">
+                                        <input type="text" id="search_privilege" class="form-control bg-transparent border-0"
+                                               placeholder="Search Privilege (Privilege name)">
+                                        <button type="button" onclick="searchPrivilege()" class="btn btn-gradient-primary btn-rounded btn-icon">
+                                            <i class="mdi mdi-magnify"></i>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <form class="form-sample">
+                            <p class="card-description">Enter Privilege details</p>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Privilege Name</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="privilegeName" required="true"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Privilege Polices</label>
+                                        <div class="col-sm-9">
+                                            <textarea required="true" class="form-control" id="privilegePolices" rows="4"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Privilege Description</label>
+                                        <div class="col-sm-9">
+                                            <textarea required="true" class="form-control" id="privilegeDescription" rows="4"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Select status</label>
+                                        <div class="col-sm-9">
+                                            <select class="form-control" id="privilegeStatus">
+                                                <option value="-1">Select Status</option>
+                                                <option value="ACTIVE">ACTIVE</option>
+                                                <option value="INACTIVE">INACTIVE</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <input type="hidden" class="form-control" id="divisionId">
+                                        <button type="button" onclick="savePrivilege();"
+                                                class="btn btn-gradient-success btn-rounded btn-fw">Privilege Save/Edit
+                                        </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <button type="button" onclick="clearPrivilege();"
+                                                class="btn btn-gradient-danger btn-rounded btn-fw"> Clear
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Privilege List</h4>
+                        <br>
+                        </p>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped dataTable" id="privilegeTable">
+                                <thead>
+                                <tr>
+                                    <th> Privilege</th>
+                                    <th> Privilege Polices </th>
+                                    <th> Privilege Description </th>
+                                    <th> Status </th>
+                                    <th> Action </th>
+                                </tr>
+                                </thead>
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>
